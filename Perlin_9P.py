@@ -30,9 +30,8 @@ def eval_carre(t, dif):
 
 def generate_tab(t_in, dif, n):
     """
-
-    :param t_in:
-    :param dif:
+    :param t_in: Paramètre du tableau en entré;
+    :param dif: 
     :param n:
     :return:
     """
@@ -80,7 +79,8 @@ def fusion_tab(t1, t2, t3, t4):
     for j in range(n-1):
         t[n-1][j] = (t1[n-1][j] + t3[0][j]) / 2
 
-    t[n-1][n-1] = (t1[n-1][n-1] + t2[0][n-1] + t3[n-1][0] + t4[0][0]) / 4
+    t[n-1][n-1] = (t1[n-1][n-1]
+                   + t2[0][n-1] + t3[n-1][0] + t4[0][0]) / 4
 
     for j in range(n, 2*n-1):
         t[n-1][j] = (t2[n-1][j-n+1] + t4[0][j-n+1]) / 2
@@ -103,6 +103,25 @@ t[0][1] = random.uniform(0, 100)
 t[1][1] = random.uniform(0, 100)
 t[1][0] = random.uniform(0, 100)
 
-t_ok = generate_tab(t, 10, 1)
+
+t_ok = generate_tab(t, 10, 5)
+mon_fichier = open("pyspace.asc", "w")
+mon_fichier = open("pyspace", "w")
+mon_fichier.write("ncols"+"         "+"33"+"\n")
+mon_fichier.write("nrows"+"         "+"33"+"\n")
+mon_fichier.write("xllcorner"+"     "+"0"+"\n")
+mon_fichier.write("yllcorner"+"     "+"0"+"\n")
+mon_fichier.write("cellsize"+"      "+"5.000000"+"\n")
+mon_fichier.write("NODATA_value"+"   "+"-9999"+"\n")
+
 for l in t_ok:
-    print(l)
+    a = 1
+    for i in l:
+        mon_fichier.write(str(i)+" ")
+    mon_fichier.write("\n")
+    
+    
+
+mon_fichier.close()
+print ("Ecriture fichier txt finis")
+print ("Ecriture fichier asc finis")

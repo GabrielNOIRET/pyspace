@@ -1,6 +1,7 @@
 import tkinter
 from random import randint
 
+
 class Canvas3d(tkinter.Canvas):
     def __init__(self, master, persX, persY, width = None, height = None):
         tkinter.Canvas.__init__(self, master, width = width, height = height)
